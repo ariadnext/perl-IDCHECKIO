@@ -1,0 +1,6 @@
+MANIFEST
+Makefile.PL
+lib/IDCheckIO.pm
+lib/ResponseIDCIO.pm
+MYMETA.yml
+MYMETA.json
