@@ -4,8 +4,11 @@ use warnings;
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  NAME         => 'idcheckio',
-  VERSION_FROM => 'lib/IDCheckIO.pm',
+  NAME         => 'IDCHECKIO',
+  VERSION_FROM => 'lib/IDCHECKIO/Client.pm',
+  AUTHOR   => 'Denis Jagoudel (denis.jagoudel@ariadnext.com)',
+  ABSTRACT => 'Module to use the IDCHECKIO API easily',
+  LICENSE  => 'perl',
   BUILD_REQUIRES => {
     'REST::Client'     => '273',
     'JSON::Parse'      => '0.39',

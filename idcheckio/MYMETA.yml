@@ -1,7 +1,7 @@
 ---
-abstract: unknown
+abstract: 'Module to use the IDCHECKIO API easily'
 author:
-  - unknown
+  - 'Denis Jagoudel (denis.jagoudel@ariadnext.com)'
 build_requires:
   Cpanel::JSON::XS: '3.0211'
   JSON::Parse: '0.39'
@@ -10,14 +10,14 @@ configure_requires:
   ExtUtils::MakeMaker: '0'
 dynamic_config: 0
 generated_by: 'ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690'
-license: unknown
+license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: '1.4'
-name: idcheckio
+name: IDCHECKIO
 no_index:
   directory:
     - t
     - inc
 requires: {}
-version: '0.01'
+version: '0.04'

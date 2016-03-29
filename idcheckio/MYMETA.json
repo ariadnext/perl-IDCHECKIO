@@ -1,18 +1,18 @@
 {
-   "abstract" : "unknown",
+   "abstract" : "Module to use the IDCHECKIO API easily",
    "author" : [
-      "unknown"
+      "Denis Jagoudel (denis.jagoudel@ariadnext.com)"
    ],
    "dynamic_config" : 0,
    "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690",
    "license" : [
-      "unknown"
+      "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "idcheckio",
+   "name" : "IDCHECKIO",
    "no_index" : {
       "directory" : [
          "t",
@@ -37,5 +37,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.04"
 }

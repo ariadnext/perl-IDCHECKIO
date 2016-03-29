@@ -1,4 +1,4 @@
-# This Makefile is for the idcheckio extension to perl.
+# This Makefile is for the IDCHECKIO extension to perl.
 #
 # It was generated automatically by MakeMaker version
 # 6.98 (Revision: 69800) from the contents of
@@ -11,12 +11,15 @@
 
 #   MakeMaker Parameters:
 
-#     BUILD_REQUIRES => { REST::Client=>q[273], JSON::Parse=>q[0.39], Cpanel::JSON::XS=>q[3.0211] }
+#     ABSTRACT => q[Module to use the IDCHECKIO API easily]
+#     AUTHOR => [q[Denis Jagoudel (denis.jagoudel@ariadnext.com)]]
+#     BUILD_REQUIRES => { Cpanel::JSON::XS=>q[3.0211], JSON::Parse=>q[0.39], REST::Client=>q[273] }
 #     CONFIGURE_REQUIRES => {  }
-#     NAME => q[idcheckio]
+#     LICENSE => q[perl]
+#     NAME => q[IDCHECKIO]
 #     PREREQ_PM => { Cpanel::JSON::XS=>q[3.0211], JSON::Parse=>q[0.39], REST::Client=>q[273] }
 #     TEST_REQUIRES => {  }
-#     VERSION_FROM => q[lib/IDCheckIO.pm]
+#     VERSION_FROM => q[lib/IDCHECKIO/Client.pm]
 
 # --- MakeMaker post_initialize section:
 
@@ -53,13 +56,13 @@ VENDORLIBEXP = /usr/share/perl5
 AR_STATIC_ARGS = cr
 DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
-NAME = idcheckio
-NAME_SYM = idcheckio
-VERSION = 0.01
+NAME = IDCHECKIO
+NAME_SYM = IDCHECKIO
+VERSION = 0.04
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = 0_04
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = 0.04
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -141,11 +144,11 @@ MM_REVISION = 69800
 # PARENT_NAME = NAME without BASEEXT and no trailing :: (eg Foo::Bar)
 # DLBASE  = Basename part of dynamic library. May be just equal BASEEXT.
 MAKE = make
-FULLEXT = idcheckio
-BASEEXT = idcheckio
+FULLEXT = IDCHECKIO
+BASEEXT = IDCHECKIO
 PARENT_NAME = 
 DLBASE = $(BASEEXT)
-VERSION_FROM = lib/IDCheckIO.pm
+VERSION_FROM = lib/IDCHECKIO/Client.pm
 OBJECT = 
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
@@ -157,7 +160,7 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = 
+MAN3PODS = lib/IDCHECKIO/Client.pm
 
 # Where is the Config information that we are using/depend on
 CONFIGDEP = $(PERL_ARCHLIB)$(DFSEP)Config.pm $(PERL_INC)$(DFSEP)config.h
@@ -179,13 +182,13 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/IDCheckIO.pm \
-	lib/ResponseIDCIO.pm
+TO_INST_PM = lib/IDCHECKIO/Client.pm \
+	lib/IDCHECKIO/ResponseIDCIO.pm
 
-PM_TO_BLIB = lib/IDCheckIO.pm \
-	blib/lib/IDCheckIO.pm \
-	lib/ResponseIDCIO.pm \
-	blib/lib/ResponseIDCIO.pm
+PM_TO_BLIB = lib/IDCHECKIO/Client.pm \
+	blib/lib/IDCHECKIO/Client.pm \
+	lib/IDCHECKIO/ResponseIDCIO.pm \
+	blib/lib/IDCHECKIO/ResponseIDCIO.pm
 
 
 # --- MakeMaker platform_constants section:
@@ -254,8 +257,8 @@ CI = ci -u
 RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
-DISTNAME = idcheckio
-DISTVNAME = idcheckio-0.01
+DISTNAME = IDCHECKIO
+DISTVNAME = IDCHECKIO-0.04
 
 
 # --- MakeMaker macro section:
@@ -409,8 +412,10 @@ POD2MAN_EXE = $(PERLRUN) "-MExtUtils::Command::MM" -e pod2man "--"
 POD2MAN = $(POD2MAN_EXE)
 
 
-manifypods : pure_all 
-	$(NOECHO) $(NOOP)
+manifypods : pure_all  \
+	lib/IDCHECKIO/Client.pm
+	$(NOECHO) $(POD2MAN) --section=$(MAN3EXT) --perm_rw=$(PERM_RW) \
+	  lib/IDCHECKIO/Client.pm $(INST_MAN3DIR)/IDCHECKIO::Client.$(MAN3EXT) 
 
 
 
@@ -477,9 +482,9 @@ realclean purge ::  clean realclean_subdirs
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
 	$(NOECHO) $(ECHO) '---' > META_new.yml
-	$(NOECHO) $(ECHO) 'abstract: unknown' >> META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''Module to use the IDCHECKIO API easily'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '  - unknown' >> META_new.yml
+	$(NOECHO) $(ECHO) '  - '\''Denis Jagoudel (denis.jagoudel@ariadnext.com)'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  Cpanel::JSON::XS: '\''3.0211'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  JSON::Parse: '\''0.39'\''' >> META_new.yml
@@ -488,34 +493,34 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
 	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'license: unknown' >> META_new.yml
+	$(NOECHO) $(ECHO) 'license: perl' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
 	$(NOECHO) $(ECHO) '  version: '\''1.4'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'name: idcheckio' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: IDCHECKIO' >> META_new.yml
 	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - inc' >> META_new.yml
 	$(NOECHO) $(ECHO) 'requires: {}' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''0.01'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''0.04'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
-	$(NOECHO) $(ECHO) '   "abstract" : "unknown",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "Module to use the IDCHECKIO API easily",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
-	$(NOECHO) $(ECHO) '      "unknown"' >> META_new.json
+	$(NOECHO) $(ECHO) '      "Denis Jagoudel (denis.jagoudel@ariadnext.com)"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
 	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
 	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
-	$(NOECHO) $(ECHO) '      "unknown"' >> META_new.json
+	$(NOECHO) $(ECHO) '      "perl_5"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
 	$(NOECHO) $(ECHO) '   "meta-spec" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
 	$(NOECHO) $(ECHO) '      "version" : "2"' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "name" : "idcheckio",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "IDCHECKIO",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
@@ -540,7 +545,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
 	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "0.01"' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.04"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
@@ -819,8 +824,8 @@ testdb_static :: testdb_dynamic
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT></ABSTRACT>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR></AUTHOR>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>Module to use the IDCHECKIO API easily</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>Denis Jagoudel (denis.jagoudel@ariadnext.com)</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.20" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
@@ -832,8 +837,8 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  lib/IDCheckIO.pm blib/lib/IDCheckIO.pm \
-	  lib/ResponseIDCIO.pm blib/lib/ResponseIDCIO.pm 
+	  lib/IDCHECKIO/Client.pm blib/lib/IDCHECKIO/Client.pm \
+	  lib/IDCHECKIO/ResponseIDCIO.pm blib/lib/IDCHECKIO/ResponseIDCIO.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 

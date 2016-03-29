@@ -1,6 +1,5 @@
 MANIFEST
 Makefile.PL
-lib/IDCheckIO.pm
-lib/ResponseIDCIO.pm
-MYMETA.yml
-MYMETA.json
+lib/IDCHECKIO/Client.pm
+lib/IDCHECKIO/ResponseIDCIO.pm
+README

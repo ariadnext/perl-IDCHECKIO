@@ -1,14 +1,29 @@
-package IDCheckIO;
+package IDCHECKIO::Client;
 
 #use strict;
 use REST::Client;
 use MIME::Base64;
 use Cpanel::JSON::XS qw(encode_json);
-use ResponseIDCIO;
+use IDCHECKIO::ResponseIDCIO;
 use JSON::Parse 'parse_json';
 
 
-our $VERSION = '0.01';
+=head1 NAME
+
+IDCHECKIO::Client - Client to use the IDCHECKIO API easily
+
+=head1 SYNOPSIS
+
+To complete
+
+=head1 DESCRIPTION
+
+...
+
+=cut
+
+
+our $VERSION = '0.04';
 
 sub new {
   my $class = shift;
@@ -61,10 +76,10 @@ sub analyse_mrz {
   $self->{_client}->POST($url, $json_data);
   my $json = parse_json($self->{_client}->responseContent());
   if( $self->{_client}->responseCode() eq '200' ){ 
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json);
   }
   else {
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
   }
   return $result; 
 }
@@ -142,10 +157,10 @@ sub get_result {
   $self->{_client}->GET($url);
   my $json = parse_json($self->{_client}->responseContent());
   if( $self->{_client}->responseCode() eq '200' ){
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json); 
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json); 
   }
   else {
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
   }
   return $result;
 }
@@ -162,10 +177,10 @@ sub get_report {
   $self->{_client}->GET($url);
   my $json = parse_json($self->{_client}->responseContent());
   if( $self->{_client}->responseCode() eq '200' ){ 
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json);
   }
   else {
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
   }
   return $result;
 }
@@ -182,10 +197,10 @@ sub get_status {
   $self->{_client}->GET($url);
   my $json = parse_json($self->{_client}->responseContent());
   if( $self->{_client}->responseCode() eq '200' ){ 
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), $json->{uid}, $json);
   }
   else {
-    $result = ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
+    $result = IDCHECKIO::ResponseIDCIO->new($self->{_client}->responseCode(), 0, $json);
   }
   return $result;
 }
