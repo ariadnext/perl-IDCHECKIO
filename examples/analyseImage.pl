@@ -1,9 +1,9 @@
 use strict;
-use IDCheckIO;
+use IDCHECKIO::Client;
 use Data::Dumper;
 
 
-my $object = new IDCheckIO('example@example.com', 'example');
+my $object = new IDCHECKIO::Client('example@example.com', 'example');
 
 open my $recto, '<', "/tmp/recto.jpg" or die "Unable to open file";
 open my $verso, '<', "/tmp/verso.jpg" or die "Unable to open file";
