@@ -3,12 +3,12 @@ use IDCHECKIO::Client;
 use Data::Dumper;
 
 
-my $object = new IDCHECKIO::Client('example@example.com', 'example');
+my $object = new IDCHECKIO::Client('example@example.com', 'example', 'TEST');
 
 open my $recto, '<', "/tmp/recto.jpg" or die "Unable to open file";
 open my $verso, '<', "/tmp/verso.jpg" or die "Unable to open file";
 
-my $res = $object->analyse_image($recto,$verso);
+my $res = $object->analyze_image($recto,$verso);
 
 close $recto;
 close $verso;

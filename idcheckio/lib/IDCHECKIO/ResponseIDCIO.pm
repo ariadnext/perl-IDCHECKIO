@@ -15,6 +15,7 @@ sub new {
   my $defaultScheme = { 'analysisRefUid' => '',
                         'uid'            => '',
                         'mrz'            => {
+                            'line3'      => '',
                             'line2'      => '',
                             'line1'      => ''},
                         'holderDetail'   => {
@@ -23,7 +24,7 @@ sub new {
                             'lastName'   => (''),
                             'address'    => '',
                             'birthDate'  => {
-                                'year'   => '',                                            
+                                'year'   => '',
                                 'day'    => '',
                                 'month'  => ''},
                             'gender'     => '',
@@ -55,7 +56,16 @@ sub new {
                         'accepted'       => '',
                         'started'        => '',
                         'ended'          => '',
-                        'redirectUrl'    => ''};
+                        'redirectUrl'    => '',
+                        'status'         => '',
+                        'errorMessage'   => '',
+                        'remainingCredits'=> '',
+                        'image'          => '',
+                        'images'         => ({
+                            'doc'        => '',
+                            'face'       => '',
+                            'rawType'    => '',
+                            'light'      => ''})};
 
   $self->{_body} = schemeCompliant( $self->{_body}, $defaultScheme );
 
@@ -66,7 +76,7 @@ sub new {
 sub schemeCompliant {
   my ( $dic, $scheme ) = @_;
   my $result = {};
-  
+
   foreach my $key (sort(keys $dic)) {
     my $ref = ref($dic->{$key});
     if (ref($dic->{$key}) eq "SCALAR" or ref($dic->{$key}) eq "ARRAY") {
