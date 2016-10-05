@@ -7,8 +7,6 @@ use Cpanel::JSON::XS qw(encode_json);
 use IDCHECKIO::ResponseIDCIO;
 use JSON::Parse 'parse_json';
 
-
-use Data::Dumper;
 =head1 NAME
 
 IDCHECKIO::Client - Client to use the IDCHECKIO API easily
@@ -46,9 +44,9 @@ sub new {
   if ($self->{_verify} == "False") {
     $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME}=0;
   }
-  if ($self->{_mode} == "SANDBOX") {
+  if ($self->{_mode} eq "SANDBOX") {
     $self->{_host} = "sandbox.idcheck.io" if !defined($self->{_host});
-  } elsif ($self->{_mode} == "TEST") {
+  } elsif ($self->{_mode} eq "TEST") {
     $self->{_host} = "api-test.idcheck.io" if !defined($self->{_host});
   } else {
     $self->{_host} = "api.idcheck.io" if !defined($self->{_host});
