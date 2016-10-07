@@ -24,7 +24,8 @@
          "requires" : {
             "Cpanel::JSON::XS" : "3.0211",
             "JSON::Parse" : "0.39",
-            "REST::Client" : "273"
+            "REST::Client" : "273",
+            "MIME::Base64" : "3.13"
          }
       },
       "configure" : {
@@ -37,5 +38,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.04"
+   "version" : "0.1.0"
 }
