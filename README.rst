@@ -36,8 +36,6 @@ Three platforms can be targeted with the library:
 Installation
 ============
 
-Soon...
-
 .. code-block:: bash
 
     $ cpan install IDCHECKIO::Client
@@ -92,8 +90,8 @@ This method accepts 2 images (recto and verso).
 
 There are two different ways to specify the images:
 
-- with the system path. In this case the path variable must be True
-- directly encoded in base64
+- with the system path
+- directly encoded in base64. In this case the base64 variable must be True
 
 .. code-block:: perl
 
