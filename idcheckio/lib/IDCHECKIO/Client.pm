@@ -54,6 +54,10 @@ sub new {
 
   $self->{_client} = REST::Client->new();
   $self->{_client}->setHost("$self->{_protocol}://$self->{_host}:$self->{_port}");
+  if ($self->{_verify} == "False") {
+    $self->{_client}->getUseragent()->ssl_opts(verify_hostname => 0);
+    $self->{_client}->getUseragent()->ssl_opts(SSL_verify_mode => SSL_VERIFY_NONE);
+  }
   $self->{_client}->addHeader("Content-Type", "application/json");
   $self->{_client}->addHeader("Authorization", "");
 
