@@ -1,5 +1,0 @@
-MANIFEST
-Makefile.PL
-lib/IDCHECKIO/Client.pm
-lib/IDCHECKIO/ResponseIDCIO.pm
-README
