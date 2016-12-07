@@ -15,6 +15,7 @@ use ExtUtils::MakeMaker;
           'URI::Query'           => '0.16',
           'JSON'                 => '2.90',
           'CPAN'                 => '2.11',
-          'Date::Parse'          => '2.30'
+          'Date::Parse'          => '2.30',
+          'Class::Accessor'      => '0.34'
         },
     );
